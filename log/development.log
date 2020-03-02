@@ -21036,3 +21036,838 @@ ActionView::Template::Error (Mysql2::Error: Unknown column 'posts.user_id' in 'w
   
 app/views/posts/index.html.erb:6
 app/views/posts/index.html.erb:3
+  [1m[35m (1.0ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT GET_LOCK('913760776014252810', 0)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to AddDetailsToPosts (20200302190700)
+  [1m[35m (50.2ms)[0m  [1m[35mALTER TABLE `posts` ADD `user_id` bigint NOT NULL[0m
+  [1m[35m (13.7ms)[0m  [1m[35mCREATE  INDEX `index_posts_on_user_id`  ON `posts` (`user_id`) [0m
+  [1m[35m (35.6ms)[0m  [1m[35mALTER TABLE `posts` ADD CONSTRAINT `fk_rails_5b5ddfd518`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20200302190700')[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT RELEASE_LOCK('913760776014252810')[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/" for 127.0.0.1 at 2020-03-02 20:10:51 +0100
+Started GET "/" for 127.0.0.1 at 2020-03-02 20:10:51 +0100
+  [1m[35m (0.2ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (2.2ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  [1m[35m (7.9ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by UsersController#new as HTML
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 7.3ms | Allocations: 1937)
+  Rendered users/new.html.erb within layouts/application (Duration: 7.5ms | Allocations: 2552)
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 83ms (Views: 44.5ms | ActiveRecord: 3.2ms | Allocations: 29188)
+
+
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 92ms (Views: 59.7ms | ActiveRecord: 4.9ms | Allocations: 31084)
+
+
+Started DELETE "/logout" for 127.0.0.1 at 2020-03-02 20:10:54 +0100
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"rYBdX2q3acoUIASPXfo3XpnQ2cwQ4eNB5gVehmWA6+stAYvN8hmEHas8Qy4gj+Vsr4yYCCthTlIhBJW+dHd4SQ=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+Redirected to http://127.0.0.1:3000/login
+Completed 302 Found in 3ms (ActiveRecord: 0.5ms | Allocations: 1024)
+
+
+Started GET "/login" for 127.0.0.1 at 2020-03-02 20:10:54 +0100
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.0ms | Allocations: 576)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.0ms | Allocations: 4965)
+
+
+Started POST "/login" for 127.0.0.1 at 2020-03-02 20:11:00 +0100
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"4m3ZkIq3ceHRf2j2Krak14Bx6mDNpR1SZouk4SGppaTn2gLrlIVEtZRT1dmn3wfJk/n+P5nlv854DagtRlnTmg==", "user"=>{"username"=>"lorenzo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE (confirmed = 1 AND (username = 'lorenzo' OR email = 'lorenzo')) ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/controllers/sessions_controller.rb:13:in `create'
+Redirected to http://127.0.0.1:3000/profil
+Completed 302 Found in 223ms (ActiveRecord: 0.4ms | Allocations: 1264)
+
+
+Started GET "/profil" for 127.0.0.1 at 2020-03-02 20:11:00 +0100
+Processing by UsersController#edit as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering users/edit.html.erb within layouts/application
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.7ms | Allocations: 208)
+  Rendered users/edit.html.erb within layouts/application (Duration: 5.0ms | Allocations: 1987)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 11.8ms | ActiveRecord: 0.4ms | Allocations: 6566)
+
+
+Started GET "/posts" for 127.0.0.1 at 2020-03-02 20:14:37 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7[0m
+  ↳ app/views/posts/index.html.erb:6
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.5ms | Allocations: 202)
+  Rendered posts/index.html.erb within layouts/application (Duration: 8.4ms | Allocations: 2487)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 42ms (Views: 12.7ms | ActiveRecord: 5.1ms | Allocations: 20626)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2020-03-02 20:14:39 +0100
+Processing by PostsController#new as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering posts/new.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `sports`.`name`, `sports`.`id` FROM `sports` WHERE `sports`.`user_id` = 7[0m
+  ↳ app/views/posts/_form.html.erb:44
+  Rendered posts/_form.html.erb (Duration: 11.1ms | Allocations: 4401)
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.2ms | Allocations: 43)
+  Rendered posts/new.html.erb within layouts/application (Duration: 13.0ms | Allocations: 4949)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 41ms (Views: 16.5ms | ActiveRecord: 5.3ms | Allocations: 14211)
+
+
+Started GET "/sports" for 127.0.0.1 at 2020-03-02 20:14:48 +0100
+Processing by SportsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering sports/index.html.erb within layouts/application
+  [1m[36mSport Load (1.0ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7[0m
+  ↳ app/views/sports/index.html.erb:9
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.3ms | Allocations: 44)
+  Rendered sports/index.html.erb within layouts/application (Duration: 17.5ms | Allocations: 7006)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 32ms (Views: 26.4ms | ActiveRecord: 2.5ms | Allocations: 11975)
+
+
+Started GET "/sports/new" for 127.0.0.1 at 2020-03-02 20:14:50 +0100
+Processing by SportsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering sports/new.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `sport_categories`.`name`, `sport_categories`.`id` FROM `sport_categories`[0m
+  ↳ app/views/sports/_form.html.erb:44
+  Rendered sports/_form.html.erb (Duration: 18.3ms | Allocations: 4647)
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 43)
+  Rendered sports/new.html.erb within layouts/application (Duration: 19.8ms | Allocations: 5131)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 29ms (Views: 24.2ms | ActiveRecord: 2.3ms | Allocations: 9839)
+
+
+Started POST "/sports" for 127.0.0.1 at 2020-03-02 20:14:58 +0100
+Processing by SportsController#create as HTML
+  Parameters: {"authenticity_token"=>"+SOMVMr9jan7ADBxjdxakqAL8MXPO626fzoCWJOTTT+MNaw2hM+FQ92y+pucZwpjbKqU5XYQJktVluMAS2ON5A==", "sport"=>{"name"=>"tennis", "date_begin(1i)"=>"2020", "date_begin(2i)"=>"3", "date_begin(3i)"=>"2", "frequence"=>"0", "sport_categorie_id"=>"1"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/sports_controller.rb:19:in `create'
+  [1m[36mSportCategorie Load (0.4ms)[0m  [1m[34mSELECT `sport_categories`.* FROM `sport_categories` WHERE `sport_categories`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:19:in `create'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/sports_controller.rb:19:in `create'
+  Rendering sports/new.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `sport_categories`.`name`, `sport_categories`.`id` FROM `sport_categories`[0m
+  ↳ app/views/sports/_form.html.erb:44
+  Rendered sports/_form.html.erb (Duration: 2.6ms | Allocations: 2552)
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 41)
+  Rendered sports/new.html.erb within layouts/application (Duration: 3.2ms | Allocations: 2754)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 23ms (Views: 7.8ms | ActiveRecord: 2.9ms | Allocations: 14423)
+
+
+Started POST "/sports" for 127.0.0.1 at 2020-03-02 20:15:06 +0100
+Processing by SportsController#create as HTML
+  Parameters: {"authenticity_token"=>"mOsH7EKKs78gAktzTVVv5jxJC8bka9BBEW2xyqoDRoidXNyXXLiG62Uu9lzAPMz4L8EfmbArct0P670GzfMwtg==", "sport"=>{"name"=>"tennis", "date_begin(1i)"=>"2020", "date_begin(2i)"=>"3", "date_begin(3i)"=>"2", "frequence"=>"0", "sport_categorie_id"=>"1", "photo_file"=>#<ActionDispatch::Http::UploadedFile:0x00007fb2c48cccf0 @tempfile=#<Tempfile:/var/folders/_t/sj6k5drx50z4vr6g01j4xyzc0000gn/T/RackMultipart20200302-90130-umys1v.png>, @original_filename="diagramme de classe tp 1.png", @content_type="image/png", @headers="Content-Disposition: form-data; name=\"sport[photo_file]\"; filename=\"diagramme de classe tp 1.png\"\r\nContent-Type: image/png\r\n">}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/sports_controller.rb:19:in `create'
+  [1m[36mSportCategorie Load (0.3ms)[0m  [1m[34mSELECT `sport_categories`.* FROM `sport_categories` WHERE `sport_categories`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:19:in `create'
+  [1m[36mSport Create (1.0ms)[0m  [1m[32mINSERT INTO `sports` (`name`, `frequence`, `date_begin`, `user_id`, `sport_categorie_id`, `created_at`, `updated_at`) VALUES ('tennis', 0, '2020-03-02', 7, 1, '2020-03-02 19:15:06.032905', '2020-03-02 19:15:06.032905')[0m
+  ↳ app/controllers/sports_controller.rb:19:in `create'
+  [1m[35m (6.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/sports_controller.rb:19:in `create'
+Redirected to http://127.0.0.1:3000/sports
+Completed 302 Found in 302ms (ActiveRecord: 8.3ms | Allocations: 5160)
+
+
+Started GET "/sports" for 127.0.0.1 at 2020-03-02 20:15:06 +0100
+Processing by SportsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering sports/index.html.erb within layouts/application
+  [1m[36mSport Load (0.3ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7[0m
+  ↳ app/views/sports/index.html.erb:9
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 41)
+  Rendered sports/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1350)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 7.5ms | ActiveRecord: 0.6ms | Allocations: 5785)
+
+
+Started GET "/posts" for 127.0.0.1 at 2020-03-02 20:15:08 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7[0m
+  ↳ app/views/posts/index.html.erb:6
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 44)
+  Rendered posts/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 889)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 9.6ms | ActiveRecord: 3.5ms | Allocations: 5292)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2020-03-02 20:15:09 +0100
+Processing by PostsController#new as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering posts/new.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `sports`.`name`, `sports`.`id` FROM `sports` WHERE `sports`.`user_id` = 7[0m
+  ↳ app/views/posts/_form.html.erb:44
+  Rendered posts/_form.html.erb (Duration: 18.6ms | Allocations: 1331)
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 41)
+  Rendered posts/new.html.erb within layouts/application (Duration: 19.2ms | Allocations: 1554)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 28ms (Views: 24.8ms | ActiveRecord: 1.0ms | Allocations: 6116)
+
+
+Started GET "/sports" for 127.0.0.1 at 2020-03-02 20:15:50 +0100
+Processing by SportsController#index as HTML
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering sports/index.html.erb within layouts/application
+  [1m[36mSport Load (0.5ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7[0m
+  ↳ app/views/sports/index.html.erb:9
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 41)
+  Rendered sports/index.html.erb within layouts/application (Duration: 6.7ms | Allocations: 1344)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 18ms (Views: 12.6ms | ActiveRecord: 3.3ms | Allocations: 5765)
+
+
+Started GET "/posts" for 127.0.0.1 at 2020-03-02 20:15:53 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (6.0ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7[0m
+  ↳ app/views/posts/index.html.erb:6
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 41)
+  Rendered posts/index.html.erb within layouts/application (Duration: 10.7ms | Allocations: 880)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 22ms (Views: 10.2ms | ActiveRecord: 7.1ms | Allocations: 5278)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2020-03-02 20:15:55 +0100
+Processing by PostsController#new as HTML
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering posts/new.html.erb within layouts/application
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT `sports`.`name`, `sports`.`id` FROM `sports` WHERE `sports`.`user_id` = 7[0m
+  ↳ app/views/posts/_form.html.erb:44
+  Rendered posts/_form.html.erb (Duration: 3.9ms | Allocations: 1328)
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 41)
+  Rendered posts/new.html.erb within layouts/application (Duration: 4.4ms | Allocations: 1551)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 22ms (Views: 9.8ms | ActiveRecord: 3.4ms | Allocations: 6101)
+
+
+Started GET "/posts" for 127.0.0.1 at 2020-03-02 20:15:57 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7[0m
+  ↳ app/views/posts/index.html.erb:6
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 41)
+  Rendered posts/index.html.erb within layouts/application (Duration: 3.1ms | Allocations: 880)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 24ms (Views: 8.5ms | ActiveRecord: 1.0ms | Allocations: 5279)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2020-03-02 20:15:58 +0100
+Processing by PostsController#new as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering posts/new.html.erb within layouts/application
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT `sports`.`name`, `sports`.`id` FROM `sports` WHERE `sports`.`user_id` = 7[0m
+  ↳ app/views/posts/_form.html.erb:44
+  Rendered posts/_form.html.erb (Duration: 10.5ms | Allocations: 1328)
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 41)
+  Rendered posts/new.html.erb within layouts/application (Duration: 11.2ms | Allocations: 1551)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 25ms (Views: 20.7ms | ActiveRecord: 1.8ms | Allocations: 6109)
+
+
+Started POST "/posts" for 127.0.0.1 at 2020-03-02 20:16:12 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"LprKQ6N7pkj6GV0cARvazT64114PO5FYamZozsYR3/toPKy5ImhYNfBZWypTf3MAZXry5Se4GU4Rofrqw2jyBw==", "post"=>{"photo_file"=>#<ActionDispatch::Http::UploadedFile:0x00007fb2c1edccb0 @tempfile=#<Tempfile:/var/folders/_t/sj6k5drx50z4vr6g01j4xyzc0000gn/T/RackMultipart20200302-90130-29ck8l.jpg>, @original_filename="hplogo_10429078.jpg", @content_type="image/jpeg", @headers="Content-Disposition: form-data; name=\"post[photo_file]\"; filename=\"hplogo_10429078.jpg\"\r\nContent-Type: image/jpeg\r\n">, "name"=>"test", "content"=>"test", "sport_id"=>"4"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:32:in `block in create'
+  [1m[36mPost Create (0.4ms)[0m  [1m[32mINSERT INTO `posts` (`name`, `content`, `sport_id`, `created_at`, `updated_at`, `user_id`) VALUES ('test', 'test', 4, '2020-03-02 19:16:12.279583', '2020-03-02 19:16:12.279583', 7)[0m
+  ↳ app/controllers/posts_controller.rb:32:in `block in create'
+  [1m[35m (7.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:32:in `block in create'
+Redirected to http://127.0.0.1:3000/posts
+Completed 302 Found in 126ms (ActiveRecord: 8.0ms | Allocations: 4021)
+
+
+Started GET "/posts" for 127.0.0.1 at 2020-03-02 20:16:12 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7[0m
+  ↳ app/views/posts/index.html.erb:6
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 41)
+  Rendered posts/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 1127)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 7.7ms | ActiveRecord: 0.7ms | Allocations: 5547)
+
+
+Started GET "/profil" for 127.0.0.1 at 2020-03-02 20:16:26 +0100
+Processing by UsersController#edit as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering users/edit.html.erb within layouts/application
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 43)
+  Rendered users/edit.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1651)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 29ms (Views: 26.2ms | ActiveRecord: 0.4ms | Allocations: 6643)
+
+
+Started GET "/sports" for 127.0.0.1 at 2020-03-02 20:16:30 +0100
+Processing by SportsController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering sports/index.html.erb within layouts/application
+  [1m[36mSport Load (0.7ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7[0m
+  ↳ app/views/sports/index.html.erb:9
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 44)
+  Rendered sports/index.html.erb within layouts/application (Duration: 6.1ms | Allocations: 1359)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 11.5ms | ActiveRecord: 1.3ms | Allocations: 5786)
+
+
+Started GET "/sports/3/edit" for 127.0.0.1 at 2020-03-02 20:16:32 +0100
+Processing by SportsController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  [1m[36mSport Load (0.4ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7 AND `sports`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:59:in `set_sport'
+  Rendering sports/edit.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `sport_categories`.`name`, `sport_categories`.`id` FROM `sport_categories`[0m
+  ↳ app/views/sports/_form.html.erb:44
+  Rendered sports/_form.html.erb (Duration: 2.7ms | Allocations: 2441)
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 44)
+  Rendered sports/edit.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2815)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 18ms (Views: 9.3ms | ActiveRecord: 1.3ms | Allocations: 8192)
+
+
+Started GET "/sports/3" for 127.0.0.1 at 2020-03-02 20:16:36 +0100
+Processing by SportsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  [1m[36mSport Load (0.4ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7 AND `sports`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:59:in `set_sport'
+  [1m[36mSport Load (0.3ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:5:in `show'
+  Rendering sports/show.html.erb within layouts/application
+  Rendered sports/show.html.erb within layouts/application (Duration: 0.9ms | Allocations: 174)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 6.3ms | ActiveRecord: 1.0ms | Allocations: 6228)
+
+
+Started GET "/sports" for 127.0.0.1 at 2020-03-02 20:19:55 +0100
+Processing by SportsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering sports/index.html.erb within layouts/application
+  [1m[36mSport Load (0.3ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7[0m
+  ↳ app/views/sports/index.html.erb:9
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.4ms | Allocations: 202)
+  Rendered sports/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 2014)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 12.3ms | ActiveRecord: 0.7ms | Allocations: 7676)
+
+
+Started GET "/sports/3" for 127.0.0.1 at 2020-03-02 20:19:56 +0100
+Processing by SportsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  [1m[36mSport Load (0.4ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7 AND `sports`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:59:in `set_sport'
+  [1m[36mSport Load (0.3ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:5:in `show'
+  Rendering sports/show.html.erb within layouts/application
+  Rendered sports/show.html.erb within layouts/application (Duration: 16.0ms | Allocations: 5526)
+Completed 500 Internal Server Error in 28ms (ActiveRecord: 1.9ms | Allocations: 8052)
+
+
+  
+ActionView::Template::Error (undefined method `posts' for #<Sport:0x00007fb2c1246668>):
+    4:     </div>
+    5:     <div class="col-md-10">
+    6:     <h2><%= @sport.name %></h2>
+    7:      <% @sport.posts.each do |s| %>
+    8:         <div class="card">
+    9: 
+   10:             <h5 class="card-header"><%= post.name %></h5>
+  
+app/views/sports/show.html.erb:7
+Started GET "/sports" for 127.0.0.1 at 2020-03-02 20:20:00 +0100
+Processing by SportsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering sports/index.html.erb within layouts/application
+  [1m[36mSport Load (0.4ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7[0m
+  ↳ app/views/sports/index.html.erb:9
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 44)
+  Rendered sports/index.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1373)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 11ms (Views: 8.5ms | ActiveRecord: 0.9ms | Allocations: 5873)
+
+
+Started GET "/sports" for 127.0.0.1 at 2020-03-02 20:20:13 +0100
+Processing by SportsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering sports/index.html.erb within layouts/application
+  [1m[36mSport Load (0.5ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7[0m
+  ↳ app/views/sports/index.html.erb:9
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.7ms | Allocations: 202)
+  Rendered sports/index.html.erb within layouts/application (Duration: 6.3ms | Allocations: 2014)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 13.9ms | ActiveRecord: 1.0ms | Allocations: 7680)
+
+
+Started GET "/sports/3" for 127.0.0.1 at 2020-03-02 20:20:15 +0100
+Processing by SportsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  [1m[36mSport Load (2.2ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7 AND `sports`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:59:in `set_sport'
+  [1m[36mSport Load (0.5ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:5:in `show'
+  Rendering sports/show.html.erb within layouts/application
+  Rendered sports/show.html.erb within layouts/application (Duration: 6.1ms | Allocations: 2798)
+Completed 500 Internal Server Error in 18ms (ActiveRecord: 3.2ms | Allocations: 5325)
+
+
+  
+ActionView::Template::Error (undefined method `posts' for #<Sport:0x00007fb2c1f322f0>):
+    4:     </div>
+    5:     <div class="col-md-10">
+    6:     <h2><%= @sport.name %></h2>
+    7:      <% @sport.posts.each do |post| %>
+    8:         <div class="card">
+    9: 
+   10:             <h5 class="card-header"><%= post.name %></h5>
+  
+app/views/sports/show.html.erb:7
+Started GET "/sports/3" for 127.0.0.1 at 2020-03-02 20:26:22 +0100
+  [1m[35m (0.2ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+Processing by SportsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  [1m[36mSport Load (0.4ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7 AND `sports`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:59:in `set_sport'
+  [1m[36mSport Load (0.3ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:5:in `show'
+  Rendering sports/show.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`sport_id` = 3[0m
+  ↳ app/views/sports/show.html.erb:7
+  Rendered sports/show.html.erb within layouts/application (Duration: 3.9ms | Allocations: 2511)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 36ms (Views: 8.6ms | ActiveRecord: 1.4ms | Allocations: 25486)
+
+
+Started GET "/sports" for 127.0.0.1 at 2020-03-02 20:26:30 +0100
+Processing by SportsController#index as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering sports/index.html.erb within layouts/application
+  [1m[36mSport Load (0.4ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7[0m
+  ↳ app/views/sports/index.html.erb:9
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.2ms | Allocations: 43)
+  Rendered sports/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1571)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 22ms (Views: 19.0ms | ActiveRecord: 0.9ms | Allocations: 5995)
+
+
+Started GET "/sports/4" for 127.0.0.1 at 2020-03-02 20:26:32 +0100
+Processing by SportsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  [1m[36mSport Load (0.5ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7 AND `sports`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:59:in `set_sport'
+  [1m[36mSport Load (0.8ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:5:in `show'
+  Rendering sports/show.html.erb within layouts/application
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`sport_id` = 4[0m
+  ↳ app/views/sports/show.html.erb:7
+  Rendered sports/show.html.erb within layouts/application (Duration: 9.2ms | Allocations: 4835)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 23ms (Views: 14.1ms | ActiveRecord: 2.4ms | Allocations: 10616)
+
+
+Started GET "/sports/4" for 127.0.0.1 at 2020-03-02 20:32:32 +0100
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+Processing by SportsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  [1m[36mSport Load (0.5ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7 AND `sports`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:59:in `set_sport'
+  [1m[36mSport Load (0.4ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:5:in `show'
+  Rendering sports/show.html.erb within layouts/application
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`sport_id` = 4[0m
+  ↳ app/views/sports/show.html.erb:9
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.5ms | Allocations: 202)
+  Rendered sports/show.html.erb within layouts/application (Duration: 6.8ms | Allocations: 1773)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 42ms (Views: 27.9ms | ActiveRecord: 2.4ms | Allocations: 8784)
+
+
+Started GET "/sports/4" for 127.0.0.1 at 2020-03-02 20:34:32 +0100
+Processing by SportsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  [1m[36mSport Load (0.3ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7 AND `sports`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:59:in `set_sport'
+  [1m[36mSport Load (0.2ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:5:in `show'
+  Rendering sports/show.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`sport_id` = 4[0m
+  ↳ app/views/sports/show.html.erb:9
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.3ms | Allocations: 202)
+  Rendered sports/show.html.erb within layouts/application (Duration: 5.2ms | Allocations: 1773)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 28ms (Views: 22.5ms | ActiveRecord: 1.4ms | Allocations: 8790)
+
+
+Started GET "/sports/4" for 127.0.0.1 at 2020-03-02 20:35:52 +0100
+Processing by SportsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  [1m[36mSport Load (0.2ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7 AND `sports`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:59:in `set_sport'
+  [1m[36mSport Load (0.2ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:5:in `show'
+  Rendering sports/show.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`sport_id` = 4[0m
+  ↳ app/views/sports/show.html.erb:9
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.3ms | Allocations: 202)
+  Rendered sports/show.html.erb within layouts/application (Duration: 4.1ms | Allocations: 1767)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 19ms (Views: 14.5ms | ActiveRecord: 1.1ms | Allocations: 8777)
+
+
+Started GET "/sports/4" for 127.0.0.1 at 2020-03-02 20:36:30 +0100
+Processing by SportsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  [1m[36mSport Load (0.5ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7 AND `sports`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:59:in `set_sport'
+  [1m[36mSport Load (0.4ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:5:in `show'
+  Rendering sports/show.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`sport_id` = 4[0m
+  ↳ app/views/sports/show.html.erb:5
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.3ms | Allocations: 202)
+  Rendered sports/show.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1703)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 10.1ms | ActiveRecord: 1.5ms | Allocations: 8714)
+
+
+Started GET "/sports/4" for 127.0.0.1 at 2020-03-02 20:37:27 +0100
+Processing by SportsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  [1m[36mSport Load (0.3ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7 AND `sports`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:59:in `set_sport'
+  [1m[36mSport Load (0.2ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:5:in `show'
+  Rendering sports/show.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`sport_id` = 4[0m
+  ↳ app/views/sports/show.html.erb:5
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.7ms | Allocations: 202)
+  Rendered sports/show.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1711)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 10.6ms | ActiveRecord: 1.1ms | Allocations: 8728)
+
+
+Started GET "/sports/4" for 127.0.0.1 at 2020-03-02 20:37:44 +0100
+Processing by SportsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  [1m[36mSport Load (0.2ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7 AND `sports`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:59:in `set_sport'
+  [1m[36mSport Load (0.2ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:5:in `show'
+  Rendering sports/show.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`sport_id` = 4[0m
+  ↳ app/views/sports/show.html.erb:5
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.3ms | Allocations: 202)
+  Rendered sports/show.html.erb within layouts/application (Duration: 2.8ms | Allocations: 1704)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 10.8ms | ActiveRecord: 1.0ms | Allocations: 8718)
+
+
+Started GET "/posts/1" for 127.0.0.1 at 2020-03-02 20:37:49 +0100
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/posts_controller.rb:13:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/views/posts/show.html.erb:9
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.2ms | Allocations: 57)
+  Rendered posts/show.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1843)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m  [["id", 7], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 12.5ms | ActiveRecord: 1.3ms | Allocations: 7376)
+
+
+Started GET "/sports" for 127.0.0.1 at 2020-03-02 20:37:52 +0100
+Processing by SportsController#index as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering sports/index.html.erb within layouts/application
+  [1m[36mSport Load (0.5ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7[0m
+  ↳ app/views/sports/index.html.erb:9
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 44)
+  Rendered sports/index.html.erb within layouts/application (Duration: 6.3ms | Allocations: 1717)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 29ms (Views: 22.8ms | ActiveRecord: 1.2ms | Allocations: 6284)
+
+
+Started GET "/sports/4/edit" for 127.0.0.1 at 2020-03-02 20:38:06 +0100
+Processing by SportsController#edit as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  [1m[36mSport Load (0.7ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7 AND `sports`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:59:in `set_sport'
+  Rendering sports/edit.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `sport_categories`.`name`, `sport_categories`.`id` FROM `sport_categories`[0m
+  ↳ app/views/sports/_form.html.erb:44
+  Rendered sports/_form.html.erb (Duration: 9.2ms | Allocations: 3532)
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 44)
+  Rendered sports/edit.html.erb within layouts/application (Duration: 11.7ms | Allocations: 4047)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 28ms (Views: 18.8ms | ActiveRecord: 1.5ms | Allocations: 9424)
+
+
+Started GET "/sports/3" for 127.0.0.1 at 2020-03-02 20:38:09 +0100
+Processing by SportsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  [1m[36mSport Load (0.5ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7 AND `sports`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:59:in `set_sport'
+  [1m[36mSport Load (0.3ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:5:in `show'
+  Rendering sports/show.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`sport_id` = 3[0m
+  ↳ app/views/sports/show.html.erb:5
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.2ms | Allocations: 50)
+  Rendered sports/show.html.erb within layouts/application (Duration: 2.5ms | Allocations: 863)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 18ms (Views: 6.9ms | ActiveRecord: 1.9ms | Allocations: 6638)
+
+
+Started GET "/sports/4" for 127.0.0.1 at 2020-03-02 20:38:14 +0100
+Processing by SportsController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  [1m[36mSport Load (0.9ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7 AND `sports`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:59:in `set_sport'
+  [1m[36mSport Load (0.5ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`id` = 4 LIMIT 1[0m
+  ↳ app/controllers/sports_controller.rb:5:in `show'
+  Rendering sports/show.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`sport_id` = 4[0m
+  ↳ app/views/sports/show.html.erb:5
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.2ms | Allocations: 41)
+  Rendered sports/show.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1096)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 29ms (Views: 12.2ms | ActiveRecord: 4.6ms | Allocations: 6874)
+
+
+Started GET "/posts" for 127.0.0.1 at 2020-03-02 20:38:16 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7[0m
+  ↳ app/views/posts/index.html.erb:6
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 44)
+  Rendered posts/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1639)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 9.0ms | ActiveRecord: 1.6ms | Allocations: 6528)
+
+
+Started GET "/posts/new" for 127.0.0.1 at 2020-03-02 20:38:20 +0100
+Processing by PostsController#new as HTML
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering posts/new.html.erb within layouts/application
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `sports`.`name`, `sports`.`id` FROM `sports` WHERE `sports`.`user_id` = 7[0m
+  ↳ app/views/posts/_form.html.erb:44
+  Rendered posts/_form.html.erb (Duration: 3.0ms | Allocations: 1828)
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 43)
+  Rendered posts/new.html.erb within layouts/application (Duration: 5.9ms | Allocations: 2364)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 11.1ms | ActiveRecord: 1.6ms | Allocations: 7069)
+
+
+Started POST "/posts" for 127.0.0.1 at 2020-03-02 20:40:14 +0100
+Processing by PostsController#create as HTML
+  Parameters: {"authenticity_token"=>"n2exy6N2TAwYFJy9+/lKufIb6ayw1ybSZ3Z5uo7pzU/ZwdcxImWycRJUmoupneN0qdnMF5hUrsQcseuei5Dgsw==", "post"=>{"name"=>"", "content"=>"", "sport_id"=>"3"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering posts/new.html.erb within layouts/application
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `sports`.`name`, `sports`.`id` FROM `sports` WHERE `sports`.`user_id` = 7[0m
+  ↳ app/views/posts/_form.html.erb:44
+  Rendered posts/_form.html.erb (Duration: 3.1ms | Allocations: 1762)
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 41)
+  Rendered posts/new.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1985)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 31ms (Views: 26.4ms | ActiveRecord: 0.7ms | Allocations: 8218)
+
+
+Started GET "/posts" for 127.0.0.1 at 2020-03-02 20:40:17 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7[0m
+  ↳ app/views/posts/index.html.erb:6
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 41)
+  Rendered posts/index.html.erb within layouts/application (Duration: 8.8ms | Allocations: 1119)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 15ms (Views: 12.9ms | ActiveRecord: 0.7ms | Allocations: 5520)
+
+
+Started GET "/sports" for 127.0.0.1 at 2020-03-02 20:40:28 +0100
+Processing by SportsController#index as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering sports/index.html.erb within layouts/application
+  [1m[36mSport Load (1.5ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7[0m
+  ↳ app/views/sports/index.html.erb:9
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.2ms | Allocations: 44)
+  Rendered sports/index.html.erb within layouts/application (Duration: 7.0ms | Allocations: 1358)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 12.2ms | ActiveRecord: 1.8ms | Allocations: 5778)
+
+
+Started GET "/profil" for 127.0.0.1 at 2020-03-02 20:40:30 +0100
+Processing by UsersController#edit as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering users/edit.html.erb within layouts/application
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 43)
+  Rendered users/edit.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1653)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 7.8ms | ActiveRecord: 0.3ms | Allocations: 6638)
+
+
+Started GET "/sports" for 127.0.0.1 at 2020-03-02 20:40:35 +0100
+Processing by SportsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering sports/index.html.erb within layouts/application
+  [1m[36mSport Load (20.1ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 7[0m
+  ↳ app/views/sports/index.html.erb:9
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 44)
+  Rendered sports/index.html.erb within layouts/application (Duration: 25.2ms | Allocations: 1359)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 40ms (Views: 13.6ms | ActiveRecord: 20.5ms | Allocations: 5786)
+
+
+Started GET "/posts" for 127.0.0.1 at 2020-03-02 20:40:35 +0100
+Processing by PostsController#index as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 7 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering posts/index.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 7[0m
+  ↳ app/views/posts/index.html.erb:6
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 44)
+  Rendered posts/index.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1128)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 22ms (Views: 8.1ms | ActiveRecord: 1.5ms | Allocations: 5527)
+
+

@@ -37,6 +37,13 @@
                 <%= f.text_area :content, class: 'form-control' %>
             </div>
     </div>
+
+    <div class="form-group">
+            <%= f.label :sport_id, "Contenu", class: 'col-md-4 control-label'%>
+            <div class="col-md-6">
+                <%= f.select :sport_id, current_user.sports.pluck(:name, :id), {}, class: 'form-control' %>
+            </div>
+    </div>
  
 
 
