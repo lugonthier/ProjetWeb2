@@ -1,0 +1,7 @@
+Bonjour,
+
+ <%= @user.username %> pour confirmer votre inscription rendez vous sur le lien suivant:
+
+ <%= confirm_user_url(id:@user.id, token: @user.confirmation_token) %>
+
+

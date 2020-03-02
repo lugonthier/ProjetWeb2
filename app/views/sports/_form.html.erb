@@ -1,0 +1,68 @@
+
+
+
+
+<%= form_for sport, class: 'form-horizontal' do |f| %>
+
+        <% if @sport.errors.any? %>
+            <div class="alert alert-danger">
+                <ul>
+                    <% @sport.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                    <% end %>
+                </ul>
+            </div>
+        <% end %>
+
+
+
+        <div class="form-group">
+            <%= f.label :name, "Sport", class: 'col-md-4 control-label'%>
+            <div class="col-md-6">
+                <%= f.text_field :name, class: 'form-control' %>
+            </div>
+        </div>
+
+        
+        <div class="form-group">
+            <%= f.label :date_begin, "Debut", class: 'col-md-4 control-label'%>
+            <div class="col-md-6">
+                <%= f.date_select :date_begin, class: 'form-control' %>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :frequence, "Fréquence par semaine", class: 'col-md-4 control-label'%>
+            <div class="col-md-6">
+                <%= f.select :frequence,[0, 1, 2, 3, 4, 5, 6, 7], {}, class: 'form-control' %>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :sport_categorie_id, "Catégorie", class: 'col-md-4 control-label'%>
+            <div class="col-md-6">
+                <%= f.select :sport_categorie_id, SportCategorie.pluck(:name, :id), {}, class: 'form-control' %>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :photo_file, "Couverture du sport", class: 'col-md-4 control-label'%>
+            <div class="col-md-6">
+                <%= f.file_field :photo_file, class: 'form-control' %>
+            </div>
+        </div>
+
+
+      
+
+        <div class="form-group">
+            <div class="col-md-6 col-md-offset-4">
+                <button type="submit" class="btn btn-primary">
+                <%= sport.new_record? ? 'Créer' : 'Modifier' %>
+                </button>
+            </div>
+        </div>
+
+
+
+<% end %>

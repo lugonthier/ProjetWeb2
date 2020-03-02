@@ -1,0 +1,74 @@
+<% if @user.errors.any? %>
+    <div class="alert alert-danger">
+        <ul>
+            <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+
+
+<div class="card">
+  <div class="card-header">
+    S'inscrire
+  </div>
+  <div class="card-body">
+    <%= form_for @user, class: 'form-horizontal' do |f| %>
+
+        <div class="form-group">
+            <%= f.label :username, "Nom d'utilisateur", class: 'col-md-4 control-label'%>
+            <div class="col-md-6">
+                <%= f.text_field :username, class: 'form-control' %>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :firstname, "Prenom", class: 'col-md-4 control-label'%>
+            <div class="col-md-6">
+                <%= f.text_field :firstname, class: 'form-control' %>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :lastname, "Nom", class: 'col-md-4 control-label'%>
+            <div class="col-md-6">
+                <%= f.text_field :lastname, class: 'form-control' %>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :email, "email", class: 'col-md-4 control-label'%>
+            <div class="col-md-6">
+                <%= f.email_field :email, class: 'form-control' %>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :password, "Mot de passe", class: 'col-md-4 control-label'%>
+            <div class="col-md-6">
+                <%= f.password_field :password, class: 'form-control' %>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <%= f.label :password_confirmation, "Confirmation du mot de passe", class: 'col-md-4 control-label'%>
+            <div class="col-md-6">
+                <%= f.password_field :password_confirmation, class: 'form-control' %>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-6 col-md-offset-4">
+                <button type="submit" class="btn btn-primary">Valider</button>
+            </div>
+        </div>
+
+
+    <% end %>
+   
+    
+
+  </div>
+  
+</div>

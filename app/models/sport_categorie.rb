@@ -1,0 +1,2 @@
+class SportCategorie < ApplicationRecord
+end
