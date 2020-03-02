@@ -14,8 +14,10 @@
 
         <div class="d-flex justify-content-center p-2">
             <%= link_to 'Voir', post, class: 'btn btn-primary md-2'%>
-            <%= link_to 'Modifier', [:edit, post], class: 'btn btn-primary ml-2 md-2'%>
-            <%= link_to 'Supprimer', post, class: 'btn btn-danger ml-2', data: {method: :delete, confirm: 'Voulez vous vraiment supprimer ce post'} %>
+            <% if canEdit(post) %>
+                <%= link_to 'Modifier', [:edit, post], class: 'btn btn-primary ml-2 md-2'%>
+                <%= link_to 'Supprimer', post, class: 'btn btn-danger ml-2', data: {method: :delete, confirm: 'Voulez vous vraiment supprimer ce post'} %>
+            <% end %>
         </div>
     </div>
     </div>
