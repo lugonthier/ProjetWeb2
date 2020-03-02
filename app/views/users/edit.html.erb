@@ -1,0 +1,88 @@
+<% content_for :content do %>
+<% if @user.errors.any? %>
+    <div class="alert alert-danger">
+        <ul>
+            <% @user.errors.full_messages.each do |message| %>
+                <li><%= message %></li>
+            <% end %>
+        </ul>
+    </div>
+<% end %>
+ 
+
+<div class="card">
+
+    <h5 class="card-header">Modifier mes informations</h5>
+
+    <div class="card-body">
+
+    <%=form_for @user, url: profil_path, class: 'form-horizontal' do |f| %>
+
+        <% if current_user.photo %>
+            <%= image_tag current_user.photo_url %>
+        <% end %>
+        <div class="form-group">
+            <%= f.label :photo_file, "photo de profil", class: 'col-md-4 control-label'%>
+            <div class="col-md-6">
+                <%= f.file_field :photo_file, class: 'form-control' %>
+            </div>
+
+        </div>
+
+        
+        <div class="form-group">
+            <%= f.label :username, "Nom d'utilisateur", class: 'col-md-4 control-label'%>
+            <div class="col-md-6">
+                <%= f.text_field :username, class: 'form-control' %>
+            </div>
+
+        </div>
+
+        <div class="form-group ">
+            <%= f.label :email, "Email", class: 'col-md-4 control-label'%>
+            <div class="col-md-6">
+                <%= f.email_field :email, class: 'form-control' %>
+            </div>
+
+        </div>
+
+        
+        
+        <div class="form-group">
+            <%= f.label :firstname, "Prénom", class: 'col-md-4 control-label'%>
+            <div class="col-md-6">
+                <%= f.text_field :firstname, class: 'form-control' %>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <%= f.label :lastname, "Nom", class: 'col-md-4 control-label'%>
+            <div class="col-md-6">
+                <%= f.text_field :lastname, class: 'form-control' %>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <%= f.label :sport, "Sport", class: 'col-md-4 control-label'%>
+            <div class="col-md-6">
+                <%= f.text_field :sport, class: 'form-control' %>
+            </div>
+
+        </div>
+    
+
+        <div class="form-groupe">
+            <div class="col-md-offset-4 col-md-6 ">
+                <button type="submit" class="btn btn-primary">
+                    valider
+                </button>
+            </div>
+        </div>
+    <% end %>
+
+    </div>
+</div>
+<% end %>
+<%= render template: 'layouts/profile'%>

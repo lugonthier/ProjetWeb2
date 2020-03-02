@@ -1,0 +1,48 @@
+<%= form_with(model: post, local: true) do |f| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="form-group">
+            <%= f.label :photo_file, "Ajouter une photo", class: 'col-md-4 control-label'%>
+            <div class="col-md-6">
+                <%= f.file_field :photo_file, class: 'form-control' %>
+
+                <% unless post.new_record? %>
+                  <%=image_tag post.photo_url(:thumb) %>
+                <% end %>
+            </div>
+
+    </div>
+
+
+    <div class="form-group">
+            <%= f.label :name, "Nom du post", class: 'col-md-4 control-label'%>
+            <div class="col-md-6">
+                <%= f.text_field :name, class: 'form-control' %>
+            </div>
+    </div>
+  
+    <div class="form-group">
+            <%= f.label :content, "Contenu", class: 'col-md-4 control-label'%>
+            <div class="col-md-6">
+                <%= f.text_area :content, class: 'form-control' %>
+            </div>
+    </div>
+ 
+
+
+  <div class="form-group">
+            <div class="col-md-6 col-md-offset-4">
+                <button type="submit" class="btn btn-primary">Valider</button>
+            </div>
+        </div>
+<% end %>

@@ -1,0 +1,16 @@
+<div class="container mb-6 ml-4">
+  
+  
+<div class="row">
+    <div class="col-8">
+    <%= yield(:content) %>
+    </div>
+    <div class="col-4">
+        <div class="list-group">
+            <a href="<%= profil_path %>" class="list-group-item">Mon compte</a>
+            <a href="<%= sports_path %>" class="list-group-item">Mes sports</a>
+            <a href="<%= posts_path %>" class="list-group-item">Mes photos</a>
+        </div>
+    </div>
+</div>
+</div>

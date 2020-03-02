@@ -1,0 +1,45 @@
+
+<% content_for :content do %>
+<h5> Gérer mes sports</h5>
+<p class="text-right">
+    <a href="<%= new_sport_path %>" class="btn btn-primary">Ajouter un nouveau sport</a>
+</p>
+
+
+        <% @sports.each do |sport|%>
+
+      
+        <div class="card">
+
+            <h5 class="card-header"><%= sport.name %></h5>
+
+            <div class="card-body">
+            
+            <%= image_tag sport.photo_url %>
+            <br>
+        <%= current_user.firstname %> pratique ce sport <%= sport.frequence %> fois
+        par semaine depuis le <%= sport.date_begin %>.
+
+        <div class="d-flex justify-content-center p-2">
+            <%= link_to 'Voir', sport, class: 'btn btn-primary md-2'%>
+            <%= link_to 'Modifier', [:edit, sport], class: 'btn btn-primary ml-2 md-2'%>
+            <%= link_to 'Supprimer', sport, class: 'btn btn-danger ml-2', data: {method: :delete, confirm: 'Voulez vous vraiment supprimer ce sport'} %>
+        </div>
+    </div>
+    </div>
+
+                   
+    
+         
+       
+          
+            
+            
+       
+        <% end %>
+ 
+
+
+
+<% end %>
+<%= render template: 'layouts/profile'%>
