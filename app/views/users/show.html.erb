@@ -1,13 +1,36 @@
-<h1>Hey! <%= @user.username %></h1>
-<h2>Your followers are</h2>
+<% content_for :content do %>
+
+
+
+<div class="card" style="width: 18rem;">
+  <img class="card-img-top" src=<%= @user.photo_url%> alt="Card image cap">
+  <div class="card-body">
+    <h4 class="card-title"><%= @user.username %></h4>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <p class="d-flex justify-content-center p-2">
+      <%= link_to "Voir", posts_path, class: "btn btn-warning" %>
+
+      <% if @user.followedBy?(current_user)%>
+        <%= link_to "Se désabonner", [@user, Follow], data: {method: :delete}, class: "btn btn-warning" %>
+      <% else %>
+        <%= link_to "S'abonner", [@user, Follow], method: :post, class:"btn btn-success"%>
+      <% end %>
+    </p>
+
+  </div>
+</div>
+
+<% end %>
+ <%= render template: 'layouts/profile' %>
+
 <% @followers.each do |follower| %>
-  <p><%=User.find_by_id(follower.follower_id).firstname  %>
+  <p><%=@user.followToUsername(follower.follower_id)  %>
   
   </p>
 <% end %>
 ​
 <h2>You follow</h2>
 <% @followees.each do |followee| %>
-  <p><%= User.find_by_id(followee.followee_id).firstname %></p>
+  <p><%= @user.followToUsername(followee.followee_id) %></p>
 <% end %>
 ​

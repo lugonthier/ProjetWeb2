@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :sports
  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+  get 'categories/:slug', to: 'posts#categories', as: :categories_posts
+
 
   root to: 'pages#index'
   

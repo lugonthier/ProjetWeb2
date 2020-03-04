@@ -33,10 +33,13 @@ class User < ApplicationRecord
         following_users.where(follower_id: user.id).count > 0 if user.respond_to? :id  
     end
 
-    def followerToUser(follower)
-        User.find(user_id: follower.follower_id)
-    
+    #return the username of follower or followee
+    def followToUsername(id)
+        User.find_by_id(id).username
+    #User.find_by_id(followee.followee_id).firstname
     end
+
+    
 
 =begin
     # This in comment is a model used which only concerns the one who developed.

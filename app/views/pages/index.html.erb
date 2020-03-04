@@ -9,9 +9,7 @@
     <h4>Filter</h4>
         <div class="list-group">
             <% @sport_categories.all.each do |categories| %>
-            <%= link_to categories.name, root_path, class: 'list-group-item'%>
-
-
+                <%= link_to categories.name, categories_posts_path(slug: categories.slug), class: 'list-group-item'%>
             <% end %>
         </div>
         <h4>Nouveaux venu</h4>

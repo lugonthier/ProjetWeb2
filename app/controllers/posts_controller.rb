@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :update, :destroy]
-  skip_before_action :only_signed_in
+  skip_before_action :only_signed_in, only:[:categories, :index, :show]
   
   # GET /posts
  
@@ -9,11 +9,17 @@ class PostsController < ApplicationController
   end
 
   def index
-    user_ids = current_user.posts.pluck(:id)
+    user_ids = current_user.followed_users.pluck(:id)
     @posts = Post.joins(:user).where(users: {id: user_ids})
-  
+    #comparer les dates de photos, et mettre la plus récente en haut... tu t'en rappeleras.
   end
+=begin
+  def categories
 
+    @categories = SportCategorie.find_by_slug!(params[:slug])
+    @posts = Post.joins(:sports).where(sports: {sport_categorie_id: @categories.id})
+  end
+=end
   def show
     @post = Post.find(params[:id])
 
@@ -35,7 +41,7 @@ class PostsController < ApplicationController
     
     respond_to do |format|
       if @post.save
-        format.html { redirect_to posts_path, success: 'Votre post a été créé avec succès.' }
+        format.html { redirect_to me_posts_path, success: 'Votre post a été créé avec succès.' }
        
       else
         format.html { render :new }
@@ -49,7 +55,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to posts_path, succès: 'Votre post a été modifié.' }
+        format.html { redirect_to me_posts_path, success: 'Votre post a été modifié.' }
       
       else
         format.html { render :edit }
@@ -63,7 +69,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url,succès: 'Votre poste a été détruit.' }
+      format.html { redirect_to me_posts_path, success: 'Votre poste a été détruit.' }
    
     end
   end

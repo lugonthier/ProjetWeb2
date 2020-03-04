@@ -15,9 +15,18 @@
       <div class ="navbar navbar-inverse">
         <div class ="container">
           <div class ="navbar-header">
-            <a href="<%= profil_path %>" class="navbar-brand">Spoddict</a>
+            <a href="<%= root_path %>" class="navbar-brand">Spoddict</a>
           </div>
           <ul class="nav navbar-nav navbar-right">
+
+            <li class="nav-item active">
+            <a class="nav-link" href="">
+            </a>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Acceuil', root_path, class: "nav-link" %>
+            </li>
+
             <li class="nav-item active">
             <a class="nav-link" href="/profil">
             </a>
@@ -25,6 +34,7 @@
             <li class="nav-item">
               <%= link_to 'Mes informations', profil_path, class: "nav-link" %>
             </li>
+
             
             <li class="nav-item active">
             <a class="nav-link" href="/destroy"></a>
@@ -43,6 +53,7 @@
               <a href="<%= root_path %>" class="navbar-brand">Spoddict</a>
           </div>
           <ul class="nav navbar-nav navbar-right">
+             <li class="nav-item"><a class="nav-link" href="<%= root_path %>">Acceuil</a></li>
             <li class="nav-item"><a class="nav-link" href="<%= new_user_path %>">S'inscrire</a></li>
             <li class="nav-item"><a class ="nav-link" href="<%= new_session_path %>">Se connecter </a></li>
           </ul>

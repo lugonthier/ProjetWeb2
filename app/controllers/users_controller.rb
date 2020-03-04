@@ -2,12 +2,12 @@ class UsersController < ApplicationController
 
     skip_before_action :only_signed_in, only: [:new, :create, :confirm]
 
-    #test show
+   
     def show
         @user = User.find(params[:id])
         @followers = @user.following_users
         @followees = @user.followed_users
-       
+    
     end
 
     
