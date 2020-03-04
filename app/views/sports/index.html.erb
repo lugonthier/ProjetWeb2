@@ -1,6 +1,7 @@
 
 <% content_for :content do %>
 <h5> Gérer mes sports</h5>
+
 <p class="text-right">
     <a href="<%= new_sport_path %>" class="btn btn-primary">Ajouter un nouveau sport</a>
 </p>
@@ -9,7 +10,7 @@
         <% @sports.each do |sport|%>
 
       
-        <div class="card">
+        <div class="card mb-4">
 
             <h5 class="card-header"><%= sport.name %></h5>
 

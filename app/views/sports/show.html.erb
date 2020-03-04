@@ -2,10 +2,19 @@
 
 
     <h3><%= @sport.name %><h3>
-     <% @sport.posts.each do |post| %>
-        <div class="card">
+    <div>
+    <% if @sport.user.followedBy?(current_user)%>
 
-            <h5 class="card-header"><%= post.name %></h5>
+     <%= link_to "Se désabonner", [@sport.user, Follow], data: {method: :delete}, class: "btn btn-warning" %>
+    <% else %>
+   
+     <%= link_to "S'abonner", [@sport.user, Follow], method: :post, class:"btn btn-success"%>
+    <% end %>
+    </div>
+     <% @sport.posts.each do |post| %>
+        <div class="card mb-4">
+
+            <h5 class="card-header "><%= post.name %></h5>
 
             <div class="card-body x-2 y-2">
             <%= image_tag post.photo_url(:thumb) %>

@@ -6,8 +6,15 @@ class User < ApplicationRecord
     has_many :sports, dependent: :destroy
     has_many :posts, dependent: :destroy
     has_image :photo
-   
 
+    has_many :followed_users, foreign_key: :follower_id, class_name: 'Follow'
+    has_many :followees, through: :followed_users
+    
+    has_many :following_users, foreign_key: :followee_id, class_name: 'Follow'
+    has_many :followers, through: :following_users
+
+   
+   
 
     validates :username, format: {with: /\A[a-zA-Z0-9_]{2,20}\z/, message: 'ne doit contenir que des caractères alphanumériques ou _'},
         uniqueness: {case_sensitive: false}
@@ -21,6 +28,15 @@ class User < ApplicationRecord
     validates :lastname,
      format: {with: /\A^[a-z]+$\z/, message: "ne peut contenir que des lettres en minuscules"}
 
+
+    def followedBy?(user)
+        following_users.where(follower_id: user.id).count > 0 if user.respond_to? :id  
+    end
+
+    def followerToUser(follower)
+        User.find(user_id: follower.follower_id)
+    
+    end
 
 =begin
     # This in comment is a model used which only concerns the one who developed.

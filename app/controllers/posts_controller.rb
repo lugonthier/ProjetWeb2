@@ -3,11 +3,16 @@ class PostsController < ApplicationController
   skip_before_action :only_signed_in
   
   # GET /posts
-  # GET /posts.json
-  def index
-    @posts = current_user.posts
+ 
+  def me
+    @posts = current_user.posts.all
   end
 
+  def index
+    user_ids = current_user.posts.pluck(:id)
+    @posts = Post.joins(:user).where(users: {id: user_ids})
+  
+  end
 
   def show
     @post = Post.find(params[:id])
@@ -24,7 +29,7 @@ class PostsController < ApplicationController
   end
 
   # POST /posts
-  # POST /posts.json
+
   def create
     @post = current_user.posts.new(post_params)
     

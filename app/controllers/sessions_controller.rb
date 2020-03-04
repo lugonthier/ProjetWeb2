@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
     if @user and  @user.authenticate(user_params[:password]) and User.where(confirmed: true)
     
       session[:auth] = @user.to_session
-      redirect_to profil_path, success: 'Connexion réussie'
+      redirect_to sports_path, success: 'Connexion réussie'
     else
 
       redirect_to new_session_path, danger: 'Identifiants incorrects.'
