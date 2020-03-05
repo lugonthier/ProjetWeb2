@@ -1,31 +1,13 @@
-
-<p id="notice"><%= notice %></p>
 <% content_for :content do %>
-<h1>Posts</h1>
-
-        <% @posts.each do |post| %>
-        <div class="card">
-
-            <h5 class="card-header"><%= post.name %></h5>
-
-            <div class="card-body x-2 y-2">
-            <%= image_tag post.photo_url(:thumb) %>
-            <br>
-            <%= post.content %>.
-
-        <div class="d-flex justify-content-center p-2">
-            <%= link_to 'Voir', post, class: 'btn btn-primary md-2'%>
-            <%= link_to 'Modifier', [:edit, post], class: 'btn btn-primary ml-2 md-2'%>
-            <%= link_to 'Supprimer', post, class: 'btn btn-danger ml-2', data: {method: :delete, confirm: 'Voulez vous vraiment supprimer ce post'} %>
-        </div>
+    <h1>fil d'actualité</h1>
+    <div class="row">
+    <%@posts.reverse_each do |post| %>
+        
+    <div class="container md-8 p-4">
+    <%= render post %>
+   
     </div>
+    <%end%>
     </div>
-    
-      
-    <% end %>
-
-<br>
-
-<%= link_to 'New Post', new_post_path %>
- <% end %>
- <%= render template: 'layouts/profile' %>
+<% end %>
+<%= render template: 'layouts/profile'%>

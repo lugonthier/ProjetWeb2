@@ -1,0 +1,7 @@
+<% content_for :content do %>
+    <h1>fil d'actualité catégorie <%= @categories.name %></h1>
+    <div class="row">
+        <%= render @posts, cls:'col-md-4'%>
+    </div>
+<% end %>
+<%= render template: 'layouts/profile'%>

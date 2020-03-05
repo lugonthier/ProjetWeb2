@@ -1,7 +1,7 @@
 class Sport < ApplicationRecord
   belongs_to :user
   belongs_to :sport_categorie
-
+  has_many :posts, dependent: :destroy
   
   validates :name, :date_begin, :frequence, presence: true
   validate :date_begin_not_future

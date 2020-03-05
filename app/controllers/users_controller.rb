@@ -2,6 +2,16 @@ class UsersController < ApplicationController
 
     skip_before_action :only_signed_in, only: [:new, :create, :confirm]
 
+   
+    def show
+        @user = User.find(params[:id])
+        @followers = @user.following_users
+        @followees = @user.followed_users
+    
+    end
+
+
+    
     def new
         @user = User.new
     end
@@ -57,5 +67,6 @@ class UsersController < ApplicationController
             redirect_to profil_path, success: 'Votre compte a bien été modifié'
         end
     end
+
 
 end

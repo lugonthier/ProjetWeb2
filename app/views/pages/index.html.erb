@@ -1,0 +1,22 @@
+<div class="container mb-6 ml-4">
+<div class="row">
+    <div class="col-8">
+        <h2> Photos des utilisateurs</h2>
+            <div class="row">
+                <%= render @posts, cls: 'col-md-5 mb-5'%>
+            </div>
+    </div>
+    <div class="col-4">
+        <h4>Filter</h4>
+        <div class="list-group">
+            <% @sport_categories.all.each do |categories| %>
+                <%= link_to categories.name, categories_posts_path(slug: categories.slug), class: 'list-group-item'%>
+            <% end %>
+        </div>
+        <h4>Nouveaux venu</h4>
+        <div class="list-group">
+            <%= render @users%>
+        </div>
+    </div>
+</div>
+</div>

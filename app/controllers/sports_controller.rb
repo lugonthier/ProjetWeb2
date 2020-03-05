@@ -1,5 +1,6 @@
 class SportsController < ApplicationController
     before_action :set_sport, only: [:show, :edit, :update]
+    skip_before_action :only_signed_in, only:[:show]
 
     def show
         @sport = Sport.find(params[:id])

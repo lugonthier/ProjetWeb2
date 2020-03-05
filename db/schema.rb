@@ -10,7 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_02_170501) do
+ActiveRecord::Schema.define(version: 2020_03_03_185059) do
+
+  create_table "follows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "followee_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
@@ -18,7 +25,9 @@ ActiveRecord::Schema.define(version: 2020_03_02_170501) do
     t.bigint "sport_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
     t.index ["sport_id"], name: "index_posts_on_sport_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "sport_categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -55,6 +64,7 @@ ActiveRecord::Schema.define(version: 2020_03_02_170501) do
   end
 
   add_foreign_key "posts", "sports"
+  add_foreign_key "posts", "users"
   add_foreign_key "sports", "sport_categories", column: "sport_categorie_id"
   add_foreign_key "sports", "users"
 end

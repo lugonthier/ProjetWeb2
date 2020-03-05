@@ -1,0 +1,6 @@
+<h1>The users of this app are</h1>
+<%= @user.username%>
+
+<% @posts.reverse_each do |post| %>
+  <%= render post%>
+<% end %>
