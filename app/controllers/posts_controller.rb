@@ -19,6 +19,7 @@ class PostsController < ApplicationController
     @posts = followeePosts(@followees_id)
 
   end
+  
 =begin
   def categories
 

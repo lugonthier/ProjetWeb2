@@ -1,4 +1,6 @@
 <h1>The users of this app are</h1>
-<% @users.each do |user| %>
-  <p><%= link_to user.username, user_path(user) %></p>
+<%= @user.username%>
+
+<% @posts.reverse_each do |post| %>
+  <%= render post%>
 <% end %>

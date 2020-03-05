@@ -3,13 +3,17 @@
 
 
 <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src=<%= @user.photo_url%> alt="Card image cap">
+  <% if @user.photo %>
+    <img class="card-img-top" src=<%= @user.photo_url%> alt="Card image cap">
+  <% end %>
   <div class="card-body">
     <h4 class="card-title"><%= @user.username %></h4>
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
     <p class="d-flex justify-content-center p-2">
-      <%= link_to "Voir", posts_path, class: "btn btn-warning" %>
 
+      <div class="col-md-1 p-2">
+      <%= link_to "Voir", user_path, class: "btn btn-success" %>
+      </div>
       <% if @user.followedBy?(current_user)%>
         <%= link_to "Se désabonner", [@user, Follow], data: {method: :delete}, class: "btn btn-warning" %>
       <% else %>
@@ -23,14 +27,3 @@
 <% end %>
  <%= render template: 'layouts/profile' %>
 
-<% @followers.each do |follower| %>
-  <p><%=@user.followToUsername(follower.follower_id)  %>
-  
-  </p>
-<% end %>
-​
-<h2>You follow</h2>
-<% @followees.each do |followee| %>
-  <p><%= @user.followToUsername(followee.followee_id) %></p>
-<% end %>
-​

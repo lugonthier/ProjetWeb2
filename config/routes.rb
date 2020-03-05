@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   root to: 'pages#index'
   
   get '/profil', to: 'users#edit', as: :profil
+
   patch '/profil', to: 'users#update'
+
+ 
 
   get '/users', to: 'users#show'
 
