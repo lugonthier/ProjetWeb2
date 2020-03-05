@@ -9,9 +9,15 @@ class PostsController < ApplicationController
   end
 
   def index
-    user_ids = current_user.followed_users.pluck(:id)
-    @posts = Post.joins(:user).where(users: {id: user_ids})
-    #comparer les dates de photos, et mettre la plus récente en haut... tu t'en rappeleras.
+    user = current_user
+    @followees = current_user.followed_users
+
+    @followees_id = []
+    for i in @followees
+      @followees_id << i.followee_id
+    end
+    @posts = followeePosts(@followees_id)
+
   end
 =begin
   def categories
@@ -75,6 +81,55 @@ class PostsController < ApplicationController
   end
 
   private
+
+
+  def followeePosts(ids)
+    #retourne les 5 derniers posts de chacun de ses abonnements dans un array.
+    users = User.where({id: ids})
+    length = ids.length
+    filter = []
+    
+    
+    if length != 0
+        for i in (0..(length-1))
+            if users[i].posts.all.length > 4
+                for j in ((length - 5)..(length-1))
+                    filter << users[i].posts[j]
+                end
+            else
+                for k in users[i].posts
+                    filter << k
+                end
+            end
+        end
+        #Tri bulle pour trier par date.
+
+        if filter.length > 1
+            x = filter.length-1
+            while x >= 1
+                
+                for j in (0..(x-1))
+                    
+                    if filter[j+1].created_at < filter[j].created_at
+                        switch = filter[j+1]
+                        filter[j+1] = filter[j]
+                        filter[j] = switch
+                    end
+                end
+                x = x-1
+            end
+
+        end
+
+    end
+
+   filter
+
+
+    
+end
+
+
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = current_user.posts.find(params[:id])

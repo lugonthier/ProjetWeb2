@@ -1,10 +1,13 @@
 <% content_for :content do %>
     <h1>fil d'actualité</h1>
-    
     <div class="row">
-    <% @posts.reverse_each do |post| %>
-        <%= render post %>
-    <% end %>
+    <%@posts.reverse_each do |post| %>
+        
+    <div class="col-md-8 p-4">
+    <%= render post %>
+   
+    </div>
+    <%end%>
     </div>
 <% end %>
 <%= render template: 'layouts/profile'%>

@@ -39,7 +39,56 @@ class User < ApplicationRecord
     #User.find_by_id(followee.followee_id).firstname
     end
 
-    
+    def usernameToId(username)
+        User.find_by_username(username).id
+    end
+=begin
+    def followeePosts(ids)
+        #retourne les 5 derniers posts de chacun de ses abonnements dans un array.
+        users = User.where({id: ids})
+        length = ids.length
+        filter = []
+        
+        
+        if length != 0
+            for i in (0..(length-1))
+                if users[i].posts.all.length > 4
+                    for j in ((length - 5)..(length-1))
+                        filter << users[i].posts[j]
+                    end
+                else
+                    for k in users[i].posts
+                        filter << k
+                    end
+                end
+            end
+            #Tri bulle pour trier par date.
+
+            if filter.length > 1
+                x = filter.length-1
+                while x >= 1
+                    
+                    for j in (0..(x-1))
+                        
+                        if filter[j+1].created_at < filter[j].created_at
+                            switch = filter[j+1]
+                            filter[j+1] = filter[j]
+                            filter[j] = switch
+                        end
+                    end
+                    x = x-1
+                end
+
+            end
+
+        end
+
+       filter
+
+
+        
+    end
+=end 
 
 =begin
     # This in comment is a model used which only concerns the one who developed.
