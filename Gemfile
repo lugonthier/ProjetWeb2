@@ -8,7 +8,7 @@ gem 'mini_magick', '~> 4.6'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 # Use mysql as the database for Active Record
 #gem 'mysql2', '>= 0.4.4'
-gem 'sqlite3', group: :development
+gem 'mysql2', '>= 0.4.4', group: :development
 gem 'pg', group: :production
 gem 'rails_12factor', group: :production
 # Use Puma as the app server
