@@ -40,16 +40,24 @@ test:
 # On Heroku and other platform providers, you may have a full connection URL
 # available as an environment variable. For example:
 #
-#   DATABASE_URL="mysql2://myuser:mypass@localhost/somedatabase"
+#DATABASE_URL="mysql2://root:XWu1JEOTII:FaCid828Tn:Q7iS04yjo9@localhost/somedatabase"
 #
 # You can use this database configuration with:
 #
-#   production:
-#     url: <%= ENV['DATABASE_URL'] %>
+#production:
+#  url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  url: <%= ENV['DATABASE_URL'] %>
-  #<<: *default
-  #database: training_production
-  #username: training
-  #password: <%= ENV['TRAINING_DATABASE_PASSWORD'] %>
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: sample_sqlite3_production
+  pool: 5
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+#production:
+#  <<: *default
+#  database: training_production
+#  username: training
+#  password: <%= ENV['TRAINING_DATABASE_PASSWORD'] %>
