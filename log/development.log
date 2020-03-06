@@ -64155,3 +64155,168 @@ Processing by PagesController#index as HTML
 Completed 200 OK in 15ms (Views: 12.2ms | ActiveRecord: 1.1ms | Allocations: 7228)
 
 
+  [1m[35m (8.4ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (24.6ms)[0m  [1m[35mCREATE TABLE `schema_migrations` (`version` varchar(191) NOT NULL PRIMARY KEY)[0m
+  [1m[35m (12.5ms)[0m  [1m[35mCREATE TABLE `ar_internal_metadata` (`key` varchar(191) NOT NULL PRIMARY KEY, `value` varchar(191), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT GET_LOCK('7320907975788338085', 0)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Migrating to CreateUsers (20200227115149)
+  [1m[35m (15.7ms)[0m  [1m[35mCREATE TABLE `users` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `username` varchar(191), `email` varchar(191), `confirmed` tinyint(1) DEFAULT FALSE, `confirmation_token` varchar(191), `password_digest` varchar(191), `firstname` varchar(191), `lastname` varchar(191), `photo` tinyint(1) DEFAULT FALSE, `sport` varchar(191), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mprimary::SchemaMigration Create (0.9ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20200227115149')[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSportCategories (20200229103429)
+  [1m[35m (15.7ms)[0m  [1m[35mCREATE TABLE `sport_categories` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(191), `slug` varchar(191), `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20200229103429')[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateSports (20200229103745)
+  [1m[35m (24.8ms)[0m  [1m[35mCREATE TABLE `sports` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(191), `frequence` int, `date_begin` date, `user_id` bigint NOT NULL, `sport_categorie_id` bigint NOT NULL, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL,  INDEX `index_sports_on_user_id`  (`user_id`),  INDEX `index_sports_on_sport_categorie_id`  (`sport_categorie_id`), CONSTRAINT `fk_rails_77c46d51a4`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+, CONSTRAINT `fk_rails_ee553d4c57`
+FOREIGN KEY (`sport_categorie_id`)
+  REFERENCES `sport_categories` (`id`)
+)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20200229103745')[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreatePosts (20200302170501)
+  [1m[35m (16.7ms)[0m  [1m[35mCREATE TABLE `posts` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `name` varchar(191), `content` text, `sport_id` bigint NOT NULL, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL,  INDEX `index_posts_on_sport_id`  (`sport_id`), CONSTRAINT `fk_rails_ca58c1bd6c`
+FOREIGN KEY (`sport_id`)
+  REFERENCES `sports` (`id`)
+)[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mprimary::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20200302170501')[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddDetailsToPosts (20200302190700)
+  [1m[35m (18.1ms)[0m  [1m[35mALTER TABLE `posts` ADD `user_id` bigint NOT NULL[0m
+  [1m[35m (12.5ms)[0m  [1m[35mCREATE  INDEX `index_posts_on_user_id`  ON `posts` (`user_id`) [0m
+  [1m[35m (30.5ms)[0m  [1m[35mALTER TABLE `posts` ADD CONSTRAINT `fk_rails_5b5ddfd518`
+FOREIGN KEY (`user_id`)
+  REFERENCES `users` (`id`)
+[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mprimary::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20200302190700')[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFollows (20200303185059)
+  [1m[35m (11.1ms)[0m  [1m[35mCREATE TABLE `follows` (`id` bigint NOT NULL AUTO_INCREMENT PRIMARY KEY, `follower_id` int, `followee_id` int, `created_at` datetime(6) NOT NULL, `updated_at` datetime(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mprimary::SchemaMigration Create (1.0ms)[0m  [1m[32mINSERT INTO `schema_migrations` (`version`) VALUES ('20200303185059')[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.6ms)[0m  [1m[34mSELECT `ar_internal_metadata`.* FROM `ar_internal_metadata` WHERE `ar_internal_metadata`.`key` = 'environment' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) VALUES ('environment', 'development', '2020-03-06 12:25:40.982688', '2020-03-06 12:25:40.982688')[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (2.0ms)[0m  [1m[34mSELECT RELEASE_LOCK('7320907975788338085')[0m
+  [1m[35m (0.3ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Started GET "/" for 127.0.0.1 at 2020-03-06 13:41:34 +0100
+  [1m[35m (1.7ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` LIMIT 10[0m
+  ↳ app/views/pages/index.html.erb:6
+  Rendered collection of posts/_post.html.erb [3 times] (Duration: 2.1ms | Allocations: 533)
+  [1m[36mSportCategorie Load (0.5ms)[0m  [1m[34mSELECT `sport_categories`.* FROM `sport_categories`[0m
+  ↳ app/views/pages/index.html.erb:12
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT `users`.* FROM `users` LIMIT 5[0m
+  ↳ app/views/pages/index.html.erb:18
+  Rendered collection of users/_user.html.erb [2 times] (Duration: 1.4ms | Allocations: 326)
+  Rendered pages/index.html.erb within layouts/application (Duration: 62.4ms | Allocations: 19102)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 152ms (Views: 105.1ms | ActiveRecord: 11.3ms | Allocations: 33077)
+
+
+Started GET "/login" for 127.0.0.1 at 2020-03-06 13:41:36 +0100
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 5.4ms | Allocations: 934)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 11.6ms | ActiveRecord: 0.0ms | Allocations: 5357)
+
+
+Started POST "/login" for 127.0.0.1 at 2020-03-06 13:41:41 +0100
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"GG6BqXoGYWitkGa6uOFHsDMFQPlxRtTH4K7udf6Eapd7hNmf3RJRVSi42nRPvCFM6qBNN84CwGlPq+BJODyuLw==", "user"=>{"username"=>"lorenzo", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE (confirmed = 1 AND (username = 'lorenzo' OR email = 'lorenzo')) ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ app/controllers/sessions_controller.rb:13:in `create'
+Redirected to http://127.0.0.1:3000/sports
+Completed 302 Found in 220ms (ActiveRecord: 0.4ms | Allocations: 1280)
+
+
+Started GET "/sports" for 127.0.0.1 at 2020-03-06 13:41:41 +0100
+Processing by SportsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering sports/index.html.erb within layouts/application
+  [1m[36mSport Load (0.5ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 1[0m
+  ↳ app/views/sports/index.html.erb:10
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 1.5ms | Allocations: 345)
+  Rendered sports/index.html.erb within layouts/application (Duration: 46.2ms | Allocations: 8588)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 97ms (Views: 52.1ms | ActiveRecord: 3.6ms | Allocations: 17327)
+
+
+Started GET "/profil" for 127.0.0.1 at 2020-03-06 13:41:43 +0100
+Processing by UsersController#edit as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering users/edit.html.erb within layouts/application
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.2ms | Allocations: 62)
+  Rendered users/edit.html.erb within layouts/application (Duration: 5.6ms | Allocations: 1775)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 13.1ms | ActiveRecord: 0.3ms | Allocations: 6836)
+
+
+Started GET "/sports" for 127.0.0.1 at 2020-03-06 13:41:44 +0100
+Processing by SportsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering sports/index.html.erb within layouts/application
+  [1m[36mSport Load (1.6ms)[0m  [1m[34mSELECT `sports`.* FROM `sports` WHERE `sports`.`user_id` = 1[0m
+  ↳ app/views/sports/index.html.erb:10
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 62)
+  Rendered sports/index.html.erb within layouts/application (Duration: 8.3ms | Allocations: 1150)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 20ms (Views: 16.4ms | ActiveRecord: 2.0ms | Allocations: 5649)
+
+
+Started GET "/posts/me" for 127.0.0.1 at 2020-03-06 13:41:45 +0100
+Processing by PostsController#me as HTML
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+  Rendering posts/me.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` WHERE `posts`.`user_id` = 1[0m
+  ↳ app/views/posts/me.html.erb:9:in `reverse_each'
+  Rendering layouts/profile.html.erb
+  Rendered layouts/profile.html.erb (Duration: 0.1ms | Allocations: 63)
+  Rendered posts/me.html.erb within layouts/application (Duration: 21.9ms | Allocations: 2277)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 32ms (Views: 27.5ms | ActiveRecord: 0.7ms | Allocations: 7820)
+
+
+Started GET "/" for 127.0.0.1 at 2020-03-06 14:29:45 +0100
+  [1m[35m (1.0ms)[0m  [1m[35mSET NAMES utf8mb4,  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+Processing by PagesController#index as HTML
+  Rendering pages/index.html.erb within layouts/application
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT `posts`.* FROM `posts` LIMIT 10[0m
+  ↳ app/views/pages/index.html.erb:6
+  Rendered collection of posts/_post.html.erb [3 times] (Duration: 2.1ms | Allocations: 530)
+  [1m[36mSportCategorie Load (0.4ms)[0m  [1m[34mSELECT `sport_categories`.* FROM `sport_categories`[0m
+  ↳ app/views/pages/index.html.erb:12
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT `users`.* FROM `users` LIMIT 5[0m
+  ↳ app/views/pages/index.html.erb:18
+  Rendered collection of users/_user.html.erb [2 times] (Duration: 1.7ms | Allocations: 315)
+  Rendered pages/index.html.erb within layouts/application (Duration: 48.5ms | Allocations: 18518)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/application_controller.rb:28:in `current_user'
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 152ms (Views: 95.4ms | ActiveRecord: 12.6ms | Allocations: 43249)
+
+
