@@ -8,6 +8,12 @@ class SportCategoriesController < ApplicationController
     def edit
         
     end
+###
+    def show
+        @sport_categorie = SportCategorie.find(params[:id])
+        @sports = @sport_categorie.sports.all
+
+    end
 
     def index
         @sport_categories = SportCategorie.all

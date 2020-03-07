@@ -9,8 +9,6 @@ class UsersController < ApplicationController
         @followees = @user.followed_users
     
     end
-
-
     
     def new
         @user = User.new
@@ -64,7 +62,7 @@ class UsersController < ApplicationController
 
     def update
         @user = current_user
-        user_params = params.require(:user).permit(:username, :firstname, :lastname, :email, :sport, :photo_file)
+        user_params = params.require(:user).permit(:username, :firstname, :lastname, :email, :sport, :photo_file, :description)
         if @user.update(user_params)
             redirect_to profil_path, success: 'Votre compte a bien été modifié'
         end

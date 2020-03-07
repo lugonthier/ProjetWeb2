@@ -65,13 +65,21 @@
         </div>
 
         <div class="form-group">
-            <%= f.label :sport, "Sport", class: 'col-md-4 control-label'%>
+            <%= f.label :sport, "Sport principal", class: 'col-md-4 control-label'%>
             <div class="col-md-6">
                 <%= f.text_field :sport, class: 'form-control' %>
             </div>
 
         </div>
+
     
+        <div class="form-group">
+            <%= f.label :description, "Description", class: 'col-md-4 control-label'%>
+            <div class="col-md-6">
+                <%= f.text_area :description, :cols => 40, :rows => 5 , class: 'form-control' %>
+            </div>
+
+    </div>
 
         <div class="form-groupe">
             <div class="col-md-offset-4 col-md-6 ">

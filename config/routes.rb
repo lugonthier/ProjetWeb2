@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :sports
  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  get 'categories/:slug', to: 'posts#categories', as: :categories_posts
+  get 'categories/:slug', to: 'sports#categories', as: :categories_sports
 
 
   root to: 'pages#index'
@@ -16,8 +16,8 @@ Rails.application.routes.draw do
   patch '/profil', to: 'users#update'
 
  
-
-  get '/users', to: 'users#show'
+  
+  #get '/users', to: 'users#show'
 
   resources :sport_categories
   
@@ -36,11 +36,12 @@ Rails.application.routes.draw do
 
   
   
-  resources :users, only: [:new, :create, :show] do
+  resources :users, only: [:new, :create, :show, :index] do
     member do
       get 'confirm'
     end
-    resource :follows, only: [:create, :destroy]
+   
+    resource :follows, only: [:create, :destroy, :show]
 
     
     

@@ -15,5 +15,9 @@ class FollowsController < ApplicationController
         redirect_to @user, success:"Vous êtes désabonné de " + @user.firstname 
     end
 
+    def show
+        @posts = @user.posts.all
+
+    end
 
 end

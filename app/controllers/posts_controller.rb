@@ -24,7 +24,8 @@ class PostsController < ApplicationController
   def categories
 
     @categories = SportCategorie.find_by_slug!(params[:slug])
-    @posts = Post.joins(:sports).where(sports: {sport_categorie_id: @categories.id})
+    @posts = @categorie.posts.all
+    #@posts = Post.joins(:sports).where(sports: {sport_categorie_id: @categories.id})
   end
 =end
   def show

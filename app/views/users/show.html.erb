@@ -2,23 +2,26 @@
 
 
 
-<div class="card" style="width: 18rem;">
+<div class="card">
   <% if @user.photo %>
-    <img class="card-img-top" src=<%= @user.photo_url%> alt="Card image cap">
+    <img src="<%= @user.photo_url%>" class="card-img-top" alt="...">
+    
   <% end %>
   <div class="card-body">
     <h4 class="card-title"><%= @user.username %></h4>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <p class="d-flex justify-content-center p-2">
+    <p class="card-text"><%= @user.description %></p>
+    <p class="d-flex justify-content-center p-1">
 
-      <div class="col-md-1 p-2">
-      <%= link_to "Voir", user_path, class: "btn btn-success" %>
+      <div class="col-md-1 p-1">
+      <%= link_to "Voir", [@user, Follow], method: :get, class: "btn btn-success" %>
       </div>
-      <% if @user.followedBy?(current_user)%>
-        <%= link_to "Se désabonner", [@user, Follow], data: {method: :delete}, class: "btn btn-warning" %>
-      <% else %>
-        <%= link_to "S'abonner", [@user, Follow], method: :post, class:"btn btn-success"%>
-      <% end %>
+      <% if @user.id != current_user.id %>
+        <% if @user.followedBy?(current_user)%>
+          <%= link_to "Se désabonner", [@user, Follow], data: {method: :delete}, class: "btn btn-warning" %>
+        <% else %>
+          <%= link_to "S'abonner", [@user, Follow], method: :post, class:"btn btn-success"%>
+        <% end %>
+      <%end %>
     </p>
 
   </div>
