@@ -5,7 +5,9 @@ class User < ApplicationRecord
     has_secure_token :confirmation_token
     has_many :sports, dependent: :destroy
     has_many :posts, dependent: :destroy
-    has_image :photo
+    has_image :photo, resize: '600x300', formats: {
+        thumb: '150x150'
+      }
 
     has_many :followed_users, foreign_key: :follower_id, class_name: 'Follow'
     has_many :followees, through: :followed_users
