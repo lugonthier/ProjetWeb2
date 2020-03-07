@@ -47,12 +47,12 @@ test:
 #production:
 #  url: <%= ENV['DATABASE_URL'] %>
 #
-production:
-  <<: *default
-  adapter: mysql2
-  database: db/production.sqlite3
 #production:
 #  <<: *default
-#  database: training_production
-#  username: training
-#  password: <%= ENV['TRAINING_DATABASE_PASSWORD'] %>
+#  adapter: mysql2
+#  database: db/production.sqlite3
+production:
+  <<: *default
+  database: training_production
+  username: training
+  password: <%= ENV['TRAINING_DATABASE_PASSWORD'] %>
