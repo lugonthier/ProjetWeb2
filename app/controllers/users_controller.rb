@@ -37,6 +37,8 @@ class UsersController < ApplicationController
         end
     end
 
+
+    # Pour la confirmation de mail 
     def confirm
         @user = User.find(params[:id])
 

@@ -1,0 +1,16 @@
+<% content_for :content do %>
+    <h1>catégories de sport</h1>
+    <div class="row">
+    <%@sport_categories.reverse_each do |cat| %>
+        
+    <div class="container md-8 p-4">
+        <%=cat.name %>
+   
+    </div>
+    <%end%>
+    </div>
+<% end %>
+    <p>
+        <a href="<%= new_sport_category_path %>" class="btn btn-primary">Ajouter une nouvelle catégorie</a>
+    </p>
+<%= render template: 'layouts/profile'%>

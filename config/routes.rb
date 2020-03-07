@@ -19,6 +19,8 @@ Rails.application.routes.draw do
 
   get '/users', to: 'users#show'
 
+  resources :sport_categories
+  
   # Session à changer
   get '/login', to: 'sessions#new', as: :new_session
   post '/login', to: 'sessions#create'
