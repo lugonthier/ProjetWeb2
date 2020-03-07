@@ -1,0 +1,26 @@
+<h3>Gestion des catégories</h3>
+<p class="text-right">
+<%= link_to 'Ajouter catégorie', {action: :new}, class:'btn btn-primary'%>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Nom</th>
+            <th>slug</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @sport_categories.each do |cat| %>
+            <tr>
+                <td><%= cat.name %></td>
+
+                <td><%= cat.slug %></td>
+                <td><%= link_to "Editer", [:edit, :admin, cat], class: "btn btn-primary" %>
+                <%= link_to "Supprimer", [:admin, cat], class: "btn btn-danger", data: {method: :delete, confirm:"Voulez vous vraiment supprimer cette espèce?"} %></td>
+            </tr>
+            
+        
+        <% end %>
+    </tbody>
+</table>

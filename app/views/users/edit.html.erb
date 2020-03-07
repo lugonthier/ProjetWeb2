@@ -17,10 +17,12 @@
     <div class="card-body">
 
     <%=form_for @user, url: profil_path, class: 'form-horizontal' do |f| %>
+        <div class="card">
 
         <% if current_user.photo %>
             <%= image_tag current_user.photo_url %>
         <% end %>
+        </div>
         <div class="form-group">
             <%= f.label :photo_file, "photo de profil", class: 'col-md-4 control-label'%>
             <div class="col-md-6">

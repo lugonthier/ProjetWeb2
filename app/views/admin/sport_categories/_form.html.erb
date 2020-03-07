@@ -1,0 +1,38 @@
+<%= form_for sport_categories, url: [:admin, sport_categories], html: {class: 'form-horizontal'} do |f| %>
+  <% if @sport_categories.errors.any? %>
+    
+    <div class="alert alert-danger">
+      <ul>
+        <% @sport_categories.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+    
+  <% end %>
+
+    <div class="form-group">
+            <%= f.label :name, "Nom de la catégorie", class: 'col-md-4 control-label'%>
+            <div class="col-md-6">
+                <%= f.text_field :name, class: 'form-control' %>
+
+                
+            </div>
+
+    </div>
+
+
+    <div class="form-group">
+            <%= f.label :slug, "slug de la catégorie", class: 'col-md-4 control-label'%>
+            <div class="col-md-6">
+                <%= f.text_field :slug, class: 'form-control' %>
+            </div>
+    </div>
+  
+
+  <div class="form-group">
+            <div class="col-md-6 col-md-offset-4">
+                <button type="submit" class="btn btn-primary">Valider</button>
+            </div>
+        </div>
+<% end %>

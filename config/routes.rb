@@ -19,8 +19,14 @@ Rails.application.routes.draw do
   
   #get '/users', to: 'users#show'
 
-  resources :sport_categories
   
+  scope 'superadmin', module: 'admin', as: 'admin' do
+    resources :sport_categories
+    resources :users
+    resources :sports
+    resources :posts
+  end
+
   # Session à changer
   get '/login', to: 'sessions#new', as: :new_session
   post '/login', to: 'sessions#create'
