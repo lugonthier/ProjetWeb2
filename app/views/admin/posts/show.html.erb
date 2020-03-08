@@ -1,0 +1,19 @@
+
+<% content_for :content do %>
+<div class="card">
+  <img src="<%= @post.photo_url%>" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title"><%= @post.name %></h5>
+    <p class="card-text">
+      <%= link_to @post.user do%>
+        <%= @post.user.username %> 
+      <%end%>
+      <br>
+      <%= @post.content %>
+    </p>
+  </div>
+
+</div>
+<% end %>
+
+<%= render template: 'layouts/profile'%>

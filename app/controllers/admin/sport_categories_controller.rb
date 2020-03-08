@@ -12,7 +12,7 @@ module Admin
         def edit
         
         end
-###
+
         def show
             @sport_categorie = SportCategorie.find(params[:id])
             @sports = @sport_categorie.sports.all

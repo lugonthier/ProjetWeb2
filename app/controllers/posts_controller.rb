@@ -94,6 +94,7 @@ class PostsController < ApplicationController
     
     if length != 0
         for i in (0..(length-1))
+          if users[i] != nil # Si jamais un utilisateur a été supprimé, il sera nil
             if users[i].posts.all.length > 4
                 for j in ((length - 5)..(length-1))
                     filter << users[i].posts[j]
@@ -103,6 +104,7 @@ class PostsController < ApplicationController
                     filter << k
                 end
             end
+          end
         end
         #Tri bulle pour trier par date.
 

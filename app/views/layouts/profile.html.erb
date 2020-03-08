@@ -12,8 +12,16 @@
             <a href="<%= sports_path %>" class="list-group-item">Mes sports</a>
             <a href="<%= me_posts_path %>" class="list-group-item">Mes photos</a>
             <a href="<%= posts_path %>" class="list-group-item">Mes abonnements</a>
+            <% if current_user.admin  %>
+                <a href="<%= admin_users_path %>" class="list-group-item">Gestion des utilisateurs</a>
+                <a href="<%= admin_sports_path %>" class="list-group-item">Gestion des sports</a>
+                <a href="<%= admin_sport_categories_path %>" class="list-group-item">Gestion des catégories</a>
+                <a href="<%= admin_posts_path %>" class="list-group-item">Gestion des posts</a>
+            <% end %>
         </div>
     </div>
+  
+
 
 
 

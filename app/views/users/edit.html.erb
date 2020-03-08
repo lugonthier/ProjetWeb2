@@ -90,6 +90,9 @@
                 </button>
             </div>
         </div>
+
+        <%= link_to 'Supprimer', @user, class: 'btn btn-danger ml-2', data: {method: :delete, confirm: 'Voulez vous vraiment supprimer ce votre compte?'} %>
+            
     <% end %>
 
     </div>
