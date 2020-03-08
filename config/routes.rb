@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   
   
   
-  resources :sports
+ 
  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   get 'categories/:slug', to: 'sports#categories', as: :categories_sports
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy', as: :destroy_session
 
   resources :sessions, only: [:new, :create, :destroy]
-
+  resources :sports
   resources :posts do
     collection do
       get 'me'

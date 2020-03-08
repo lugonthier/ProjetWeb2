@@ -56,7 +56,7 @@ class SportsController < ApplicationController
     end
 
     def set_sport
-    
+        
        @sport = current_user.sports.find(params[:id])
 
     end

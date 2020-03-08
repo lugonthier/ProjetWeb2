@@ -1,0 +1,31 @@
+
+<% content_for :content do %>
+
+<h3>Gestion des sports des utilisateurs</h3>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID du sport</th>
+            <th>propriétaire</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @sports.each do |sport| %>
+            <tr>
+                <td><%= sport.id%></td>
+
+                <td><%= sport.user.username %></td>
+                <td><%= link_to "Voir", [:admin, sport], class: "btn btn-primary" %>
+                <%= link_to "Supprimer", [:admin, sport], class: "btn btn-danger", data: {method: :delete, confirm:"Voulez vous vraiment supprimer cette espèce?"} %></td>
+            </tr>
+            
+        
+        <% end %>
+    </tbody>
+</table>
+
+
+<% end %>
+<%= render template: 'layouts/profile'%>

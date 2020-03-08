@@ -1,0 +1,25 @@
+
+<% content_for :content do %>
+<div class="card mb-4">
+
+            <h5 class="card-header"><%= @sport.name %></h5>
+
+            <div class="card-body">
+            
+            <%= image_tag @sport.photo_url %>
+            <br>
+        <%= @sport.user.firstname %> pratique ce sport <%= @sport.frequence %> fois
+        par semaine depuis le <%= @sport.date_begin %>.
+
+        <div class="d-flex justify-content-center p-2">
+            
+            <% if canEdit(@sport) %>
+
+                <%= link_to 'Supprimer', @sport, class: 'btn btn-danger ml-2', data: {method: :delete, confirm: 'Voulez vous vraiment supprimer ce sport'} %>
+            <% end %>
+        </div>
+    </div>
+    </div>
+
+    <% end %>
+<%= render template: 'layouts/profile'%>
