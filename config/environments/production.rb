@@ -91,11 +91,6 @@ Rails.application.configure do
 
 
 
-  config.action_mailer.delivery_method = :smtp
-
-  config.action_mailer.perform_deliveries = true
-
-  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.default_url_options = { :host => 'spoddict.herokuapp.com', :protocol => 'http' }
 
@@ -105,6 +100,7 @@ Rails.application.configure do
     domain:               'gmail.com',
     user_name:            'lucas.bruno.gonthier@gmail.com',
     password:             'Lililulu46',
+    
     authentication:       'plain'
   }
 
