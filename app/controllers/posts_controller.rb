@@ -2,7 +2,6 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :update, :destroy]
   skip_before_action :only_signed_in, only:[:categories, :index, :show]
   
-  # GET /posts
  
   def me
     @posts = current_user.posts.all
@@ -31,11 +30,11 @@ class PostsController < ApplicationController
     @post = current_user.posts.new
   end
 
-  # GET /posts/1/edit
+ 
   def edit
   end
 
-  # POST /posts
+ 
 
   def create
     @post = current_user.posts.new(post_params)
@@ -51,8 +50,7 @@ class PostsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /posts/1
-  # PATCH/PUT /posts/1.json
+
   def update
     respond_to do |format|
       if @post.update(post_params)
@@ -65,8 +63,6 @@ class PostsController < ApplicationController
     end
   end
 
-  # DELETE /posts/1
-  # DELETE /posts/1.json
   def destroy
     @post.destroy
     respond_to do |format|

@@ -16,9 +16,7 @@ Rails.application.routes.draw do
   patch '/profil', to: 'users#update'
 
  
-  
-  #get '/users', to: 'users#show'
-
+ 
   
   scope 'superadmin', module: 'admin', as: 'admin' do
     resources :sport_categories
@@ -28,11 +26,13 @@ Rails.application.routes.draw do
   end
 
   # Session à changer
+
   get '/login', to: 'sessions#new', as: :new_session
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy', as: :destroy_session
 
-  resources :sessions, only: [:new, :create, :destroy]
+  #resources :sessions, only: [:new, :create, :destroy]
+
   resources :sports
   resources :posts do
     collection do

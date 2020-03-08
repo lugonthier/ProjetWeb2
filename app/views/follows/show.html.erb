@@ -1,11 +1,11 @@
 <% content_for :content do %>
-Les derniers posts de <%= @user.username %>
-<div class="row">
-  <% @posts.reverse_each do |post| %>
+  Les derniers posts de <%= @user.username %>
+  <div class="row">
+    <% @posts.reverse_each do |post| %>
   
-    <%= render post,cls: 'col-md-5 mb-5 p-2' %>
+      <%= render post,cls: 'col-md-5 mb-5 p-2' %>
 
-<% end %>
-</div>
+    <% end %>
+  </div>
 <% end %>
 <%= render template: 'layouts/profile'%>

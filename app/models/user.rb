@@ -15,7 +15,7 @@ class User < ApplicationRecord
     has_many :following_users, foreign_key: :followee_id, class_name: 'Follow'
     has_many :followers, through: :following_users
 
-   
+   #has_one_attached :profile_picture
    
 
     validates :username, format: {with: /\A[a-zA-Z0-9_]{2,20}\z/, message: 'ne doit contenir que des caractères alphanumériques ou _'},

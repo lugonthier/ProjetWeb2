@@ -2,12 +2,12 @@
 <% content_for :content do %>
 <div class="card mb-4">
 
-            <h5 class="card-header"><%= @sport.name %></h5>
+    <h5 class="card-header"><%= @sport.name %></h5>
 
-            <div class="card-body">
+    <div class="card-body">
             
-            <%= image_tag @sport.photo_url %>
-            <br>
+        <%= image_tag @sport.photo_url %>
+        <br>
         <%= @sport.user.firstname %> pratique ce sport <%= @sport.frequence %> fois
         par semaine depuis le <%= @sport.date_begin %>.
 
@@ -19,7 +19,7 @@
             <% end %>
         </div>
     </div>
-    </div>
+</div>
 
     <% end %>
 <%= render template: 'layouts/profile'%>
