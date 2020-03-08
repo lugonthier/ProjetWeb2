@@ -22,9 +22,10 @@ class UsersController < ApplicationController
 
             @user.save
 
-            UserMailer.confirm(@user).deliver_now 
+            #Pour délivrer le mail
+            #UserMailer.confirm(@user).deliver_now 
 
-            redirect_to new_user_path, success: 'votre compte a bien été crée, vous avez reçu un email de confirmation'
+            redirect_to new_user_path, success: 'votre compte a bien été créé'
 
             
             
