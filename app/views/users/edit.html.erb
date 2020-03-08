@@ -83,7 +83,7 @@
 
     </div>
 
-        <div class="form-groupe">
+        <div class="form-group mb-2">
             <div class="col-md-offset-4 col-md-6 ">
                 <button type="submit" class="btn btn-primary">
                     valider
@@ -91,7 +91,7 @@
             </div>
         </div>
 
-        <%= link_to 'Supprimer', @user, class: 'btn btn-danger ml-2', data: {method: :delete, confirm: 'Voulez vous vraiment supprimer ce votre compte?'} %>
+        <%= link_to 'Supprimer le compte', @user, class: 'btn btn-danger ml-2', data: {method: :delete, confirm: 'Voulez vous vraiment supprimer ce votre compte?'} %>
             
     <% end %>
 

@@ -1,0 +1,22 @@
+html {
+    min-height: 100%; 
+    position: relative;
+}
+
+body {
+    margin-bottom: 110px;
+}
+
+.main-footer {
+    position: absolute;
+    width: 100%;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    color: white;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    overflow: hidden;
+    height: 110px;
+}
