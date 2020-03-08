@@ -10,11 +10,11 @@ class SessionsController < ApplicationController
   def create
     user_params = params.require(:user)
 
-    # Pour confirmation mail rajouter confirmed = 1 AND 
-    @user = User.where('(username = :username OR email = :username)', username: user_params[:username]).first
+    # Pour confirmation mail rajouter  confirmed = 1 AND
+    @user = User.where('confirmed = 1 AND (username = :username OR email = :username)', username: user_params[:username]).first
 
     #Pour confirmation de mail rajouter and User.where(confirmed: true)
-    if @user and  @user.authenticate(user_params[:password]) 
+    if @user and  @user.authenticate(user_params[:password]) and User.where(confirmed: true)
     
       session[:auth] = @user.to_session
       redirect_to sports_path, success: 'Connexion réussie'

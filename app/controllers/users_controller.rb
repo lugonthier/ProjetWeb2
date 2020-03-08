@@ -15,14 +15,14 @@ class UsersController < ApplicationController
     end
 
     def create
-        user_params = params.require(:user).permit(:username, :email, :lastname, :firstname, :password, :password_confirmation, :admin)
+        user_params = params.require(:user).permit(:username, :email, :lastname, :firstname, :password, :password_confirmation)
         @user = User.new(user_params)
     
         if @user.valid?
 
             @user.save
 
-            #UserMailer.confirm(@user).deliver_now à rajouter pour la confirmation de mail
+            UserMailer.confirm(@user).deliver_now 
 
             redirect_to new_user_path, success: 'votre compte a bien été crée, vous avez reçu un email de confirmation'
 
