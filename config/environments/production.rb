@@ -102,6 +102,7 @@ Rails.application.configure do
     password:             'Lililulu46',
     
     authentication:       'plain'
+    enable_starttls_auto: true
   }
 
   # Inserts middleware to perform automatic connection switching.
